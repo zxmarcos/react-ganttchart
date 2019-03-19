@@ -1,0 +1,92 @@
+.g-container {
+  background: #f3f3f3;
+  position: absolute;
+}
+
+.g-timeheader {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.g-header-row-height {
+  height: 25px;
+}
+
+.g-header-day {
+  min-width: 25px;
+  max-width: 25px;
+  border-right: 1px solid #d5d5d5;
+  border-bottom: 1px solid #d5d5d5;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.g-chart-viewport {
+  background: repeating-linear-gradient(
+    to right,
+    white,
+    white 24px,
+    #949494 25px
+  );
+  position: relative;
+}
+
+.g-task {
+  position: relative;
+  background: rgb(212, 232, 255);
+  border: 1px solid darkgray;
+  height: 20px;
+  margin-top: 2px;
+  box-sizing: border-box;
+}
+
+.g-task-group {
+  background: none;
+  border: none;
+}
+
+.g-task-group-bar {
+  background: rgb(56, 56, 56);;
+  position: absolute;
+  height: 10px;
+  width: 100%;
+}
+
+.g-task-group-bar::before, .g-task-group-bar::after {
+  position: absolute;
+  height: 0;
+  width: 0;
+  bottom: -8px;
+  border: 0;
+  border-color: rgb(56, 56, 56);
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  border-style: solid;
+  content: " ";
+}
+
+.g-task-group-bar::before {
+  left: 0px;
+  border-width: 8px 8px 0 0;
+}
+
+.g-task-group-bar::after {
+  right: 0px;
+  border-width: 8px 0 0 8px;
+}
+
+.g-task-progress {
+  position: absolute;
+  background: rgb(0, 255, 0, 0.5);
+  height: 20px;
+}
+
+.g-task-group .g-task-progress {
+  position: absolute;
+  background: rgb(0, 255, 0, 0.5);
+  height: 10px;
+  z-index: 10;
+}
