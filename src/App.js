@@ -62,6 +62,8 @@ class App extends Component {
         new Date(2019, 3, 15)
       );
 
+      t7.setProgress(100);
+
       const g1 = new Task('GRUPO 1', null, null, true);
       g1.addTask(t4);
 

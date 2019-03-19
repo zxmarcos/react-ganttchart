@@ -17,7 +17,6 @@ const monthNames = [
 ];
 
 const createMonthSpan = (m, y) => {
-  console.log('cm', m, y);
   return {
     month: `${monthNames[m]}, ${y}`,
     span: 1
@@ -67,8 +66,6 @@ export default class GTimeHeader extends Component {
         </td>
       );
     }
-
-    console.log(monthSpans);
 
     return (
       <table className="g-timeheader" cellPadding="0" cellSpacing="0">

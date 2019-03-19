@@ -11,9 +11,9 @@ export default class GTaskGroup extends Component {
 
     return (
       <div className="g-task g-task-group" style={style}>
-        <GTaskProgress value={60} />
+        <GTaskProgress task={task} />
         <div className="g-task-group-bar"/>
-        {/* <span>{task.name}</span> */}
+        <span>{task.name}</span>
       </div>
     );
   }

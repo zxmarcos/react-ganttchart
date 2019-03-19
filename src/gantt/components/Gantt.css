@@ -84,6 +84,22 @@
   height: 20px;
 }
 
+.g-task-progress-gripper {
+  width: 3px;
+  position: absolute;
+  right: 0;
+  top: -1px;
+  background: lightgray;
+  border: 1px solid darkgray;
+  height: 100%;
+  padding: 0;
+}
+
+.g-task-progress-gripper:hover {
+  width: 6px;
+  right: -2px;
+}
+
 .g-task-group .g-task-progress {
   position: absolute;
   background: rgb(0, 255, 0, 0.5);

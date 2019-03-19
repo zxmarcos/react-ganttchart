@@ -1,7 +1,11 @@
 import Task from "./Task";
+import Observable from "./Observable";
 
-export default class Project {
+export const EvChanged = 'changed';
+
+export default class Project extends Observable {
   constructor(name='', description='') {
+    super();
     this.name = name;
     this.description = description;
     this.root = new Task(name, null, null, true);
@@ -11,9 +15,11 @@ export default class Project {
 
   addTask(task) {
     this.root.taskList.push(task);
-    const ts = this.root.findTimespan();
+    const ts = this.root.calculateTimespan();
     this.minDate = ts[0];
     this.maxDate = ts[1];
+
+    this.emit(EvChanged);
   }
 
   startDate() {
@@ -22,6 +28,10 @@ export default class Project {
   
   endDate() {
     return this.maxDate;
+  }
+
+  progress() {
+    return this.root.getProgress();
   }
 
 }
