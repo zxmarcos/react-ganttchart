@@ -10,11 +10,12 @@ class GanttViewer extends Component {
   renderTask_(prjStartDate, task) {
     if (task.isGroup) {
       const stasks = [
-        <GTaskGroup
-          task={task}
-          offset={DateUtils.daysBetween(prjStartDate, task.start)}
-          key={task.id}
-        />
+        <div key={task.id} className="g-chart-viewport-task-row">
+          <GTaskGroup
+            task={task}
+            offset={DateUtils.daysBetween(prjStartDate, task.start)}
+          />
+        </div>
       ];
       for (const subTask of task.taskList) {
         stasks.push(this.renderTask_(prjStartDate, subTask));
@@ -22,11 +23,12 @@ class GanttViewer extends Component {
       return stasks;
     } else {
       return (
-        <GTask
-          task={task}
-          offset={DateUtils.daysBetween(prjStartDate, task.start)}
-          key={task.id}
-        />
+        <div key={task.id} className="g-chart-viewport-task-row">
+          <GTask
+            task={task}
+            offset={DateUtils.daysBetween(prjStartDate, task.start)}
+          />
+        </div>
       );
     }
   }
@@ -45,7 +47,9 @@ class GanttViewer extends Component {
     return (
       <div className="g-container">
         <GTimeHeader start={startDate} end={endDate} />
-        <div className="g-chart-viewport">{this.renderTasks(context)}</div>
+        <div className="g-chart-viewport">
+          {this.renderTasks(context)}
+        </div>
       </div>
     );
   }

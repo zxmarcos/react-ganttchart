@@ -15,7 +15,7 @@ export default class Task extends Observable {
     this.end = end || new Date();
     this.taskList = [];
     this.isGroup = isGroup;
-    this.parentGroup = null;
+    this.parent = null;
     this.completePercent = 0;
   }
 
@@ -53,6 +53,12 @@ export default class Task extends Observable {
       // Emit o evento se o valor for diferente.
       if (lastProgress !== this.completePercent) {
         this.emit(EvProgressChanged, this.completePercent);
+        // Atualiza a percentagem do pai.
+        console.log(this.parent);
+        if (this.parent) {
+          console.log('compute progress', this.name, this.parent.name);
+          this.parent.calculateProgress();
+        } 
       }
     }
     return this.completePercent;
@@ -61,6 +67,7 @@ export default class Task extends Observable {
   addTask(task) {
     if (this.isGroup) {
       this.taskList.push(task);
+      task.setParent(this);
       this.calculateTimespan();
     }
   }
@@ -99,11 +106,23 @@ export default class Task extends Observable {
       this.completePercent = percent;
       if (changed) {
         this.emit(EvProgressChanged, percent);
+        // Atualiza a percentagem do pai.
+        if (this.parent) {
+          this.parent.calculateProgress();
+        } 
       }
     }
   }
 
   getProgress() {
     return this.calculateProgress();
+  }
+
+  getParent() {
+    return this.parent;
+  }
+
+  setParent(parent) {
+    this.parent = parent;
   }
 }

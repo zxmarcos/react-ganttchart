@@ -36,14 +36,9 @@ export default class GTaskProgress extends Component {
   handleMouseMove(event) {
     if (this.state.dragging && !!this.el) {
       const { task } = this.props;
-      // console.log("xxx", event.movementX);
       const maxWidth = this.el.parentNode.clientWidth;
       const width = this.el.clientWidth;
-
-      const percent = Math.floor(
-        Math.max(0, Math.min(100, ((width + event.movementX) * 100) / maxWidth))
-      );
-
+      const percent = Math.min(100, ((width + event.movementX) * 100) / maxWidth);
       task.setProgress(percent);
     }
   }
@@ -56,19 +51,18 @@ export default class GTaskProgress extends Component {
   }
 
   render() {
-    const { task } = this.props;
+    const { task, resizable } = this.props;
     return (
       <div
         ref={e => (this.el = e)}
         className="g-task-progress"
         style={{ width: `${task.getProgress()}%` }}
       >
+        {!!resizable &&
         <div
           className="g-task-progress-gripper"
           onMouseDown={ev => this.handleMouseDown(ev)}
-          onMouseMove={ev => this.handleMouseMove(ev)}
-          onMouseUp={ev => this.handleMouseUp(ev)}
-        />
+        />}
       </div>
     );
   }

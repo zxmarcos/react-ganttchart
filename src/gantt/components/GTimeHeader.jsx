@@ -61,7 +61,7 @@ export default class GTimeHeader extends Component {
 
     for (const ms of monthSpans) {
       months.push(
-        <td className="g-header-day" colSpan={ms.span} key={ms.month}>
+        <td className="g-header-day g-header-month" colSpan={ms.span} key={ms.month}>
           {ms.month}
         </td>
       );

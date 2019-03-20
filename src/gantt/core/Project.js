@@ -14,7 +14,7 @@ export default class Project extends Observable {
   }
 
   addTask(task) {
-    this.root.taskList.push(task);
+    this.root.addTask(task);
     const ts = this.root.calculateTimespan();
     this.minDate = ts[0];
     this.maxDate = ts[1];
