@@ -95,6 +95,7 @@
   position: absolute;
   background: rgb(0, 255, 0, 0.5);
   height: 28px;
+  top: -1px;
   box-sizing: border-box;
 }
 
@@ -118,4 +119,5 @@
   background: rgb(0, 255, 0, 0.5);
   height: 10px;
   z-index: 10;
+  top: 0px;
 }
