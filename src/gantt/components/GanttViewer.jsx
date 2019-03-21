@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./Gantt.css";
 import GTask from "./GTask";
 import GTaskGroup from "./GTaskGroup";
 import GTimeHeader from "./GTimeHeader";
 import GanttProject from "./GanttProject";
 import DateUtils from "../core/DateUtils";
+import "./Gantt.css";
 
 class GanttViewer extends Component {
   renderTask_(prjStartDate, task) {
