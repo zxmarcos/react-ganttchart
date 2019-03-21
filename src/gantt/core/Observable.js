@@ -20,7 +20,7 @@ export default class Observable {
 
   un(event, fn) {
     if (this.slots.hasOwnProperty(event)) {
-      this.slots = this.slots[event].filter(f => f !== fn);
+      this.slots[event] = this.slots[event].filter(f => f !== fn);
     }
   }
 }
